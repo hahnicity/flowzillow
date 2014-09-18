@@ -167,7 +167,7 @@ class ZillowClient(object):
              "rentzestimate": rent_z_estimate}
         )
 
-    def get_deep_search_results(self, address, city_state_zip, rent_z_estimate):
+    def get_deep_search_results(self, address, city_state_zip, rent_z_estimate=None):
         return self._perform_get_request(
             "GetDeepSearchResults.htm",
             {"zws-id": self.zws_id,
@@ -179,7 +179,7 @@ class ZillowClient(object):
     def get_updated_property_details(self, zpid):
         return self._perform_get_request(
             "GetUpdatedPropertyDetails.htm",
-            {"zws-id": zws_id, "zpid": zpid}
+            {"zws-id": self.zws_id, "zpid": zpid}
         )
 
     def get_demographics(self, region_id=None, state=None, city=None, neighborhood=None, zipcode=None):
@@ -188,7 +188,7 @@ class ZillowClient(object):
 
         At least rid, state/city,  city/neighborhood, or zipcode is required
         """
-        if not region_id or (state and city) or (city and neighborhood) or zipcode:
+        if not region_id or not (state and city) or not (city and neighborhood) or not zipcode:
             raise ValueError("At least rid, state/city,  city/neighborhood, or zipcode is required")
         return self._perform_get_request(
             "GetDemographics.htm",
@@ -206,7 +206,7 @@ class ZillowClient(object):
 
         At least region_id or state is required
         """
-        if not region_id or state:
+        if not region_id or not state:
             raise ValueError("At least region_id or state is required")
         return self._perform_get_request(
             "GetRegionChildren.htm",
