@@ -69,8 +69,6 @@ class SearchClient(object):
             urljoin(constants.BASE_URL, "search/GetResults.htm"), params=params
         )
         _validate_response(response)
-        import pdb
-        pdb.set_trace()
         return response.json()
 
     def _make_rect_param(self, latlong1, latlong2):
