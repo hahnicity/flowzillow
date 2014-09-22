@@ -5,7 +5,7 @@ __version__ = "0.1"
 
 
 setup(
-    name="pyzillow",
+    name="flowzillow",
     author="Gregory Rehm",
     version=__version__,
     description="An intuitive python wrapper around the Zillow API",
