@@ -159,7 +159,7 @@ class ZillowClient(object):
         )
 
     def get_deep_comps(self, zpid, count, rent_z_estimate=None):
-        return self._performat_get_request(
+        return self._perform_get_request(
             "GetDeepComps.htm",
             {"zws-id": self.zws_id,
              "zpid": zpid,
