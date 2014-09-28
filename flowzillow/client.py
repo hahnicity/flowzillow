@@ -188,7 +188,7 @@ class ZillowClient(object):
 
         At least rid, state/city,  city/neighborhood, or zipcode is required
         """
-        if not region_id or not (state and city) or not (city and neighborhood) or not zipcode:
+        if not region_id and not (state and city) and not (city and neighborhood) and not zipcode:
             raise ValueError("At least rid, state/city,  city/neighborhood, or zipcode is required")
         return self._perform_get_request(
             "GetDemographics.htm",
@@ -206,7 +206,7 @@ class ZillowClient(object):
 
         At least region_id or state is required
         """
-        if not region_id or not state:
+        if not region_id and not state:
             raise ValueError("At least region_id or state is required")
         return self._perform_get_request(
             "GetRegionChildren.htm",
