@@ -1,4 +1,7 @@
-from urlparse import urljoin
+try:
+	from urlparse import urljoin # python 2
+except ImportError:
+	from urllib.parse import urljoin # python 3
 
 import requests
 
@@ -9,7 +12,7 @@ from flowzillow.exceptions import ZillowError
 def _trim_none_values(dict_):
     new_dict = dict(dict_)
     del_keys = []
-    for k, v in new_dict.iteritems():
+    for k, v in new_dict.items():
         if not v:
             del_keys.append(k)
     for key in del_keys:
