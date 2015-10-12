@@ -1,4 +1,7 @@
-from urlparse import urljoin
+try:
+	from urlparse import urljoin # python 2
+except ImportError:
+	from urllib.parse import urljoin # python 3
 
 BASE_URL = "http://zillow.com/"
 DAYS = "any"
